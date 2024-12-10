@@ -20,12 +20,16 @@ const Navbar = () => {
         <Link to="/contact" className="text-white text-lg font-medium hover:text-gray-300">
           Contact
         </Link>
+        
       </div>
 
       {/* Bouton d'inscription */}
       <div>
         <button className="bg-white text-blue-700 px-5 py-2 font-semibold rounded-full shadow hover:bg-gray-200">
+          
+          <Link to="/SignUp" className="hover:text-blue-300">
           Sign up
+        </Link>
         </button>
       </div>
     </nav>
