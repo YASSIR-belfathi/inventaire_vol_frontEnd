@@ -1,5 +1,4 @@
 import "./App.css";
-import Header from "./home_page/components/header.js";
 import Home from "./home_page/Home.js";
 import SignUpPage from "./SignUpPage/SignUpPage.js";
 import { BrowserRouter as Router, Route, Routes } from "react-router";
