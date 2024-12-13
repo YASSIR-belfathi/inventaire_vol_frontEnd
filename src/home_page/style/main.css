@@ -1,0 +1,242 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+.containerMain {
+  width: 100%;
+  background-color: #04243c;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  align-items: center;
+  position: relative;
+}
+
+.containerMain1 {
+  width: 100%;
+  height: 600px;
+  display: flex;
+  background-size: contain;
+  align-items: center;
+  /* background-image: url("C:/Users/YASSIR/Desktop/inventaire_project_app/src/home_page/assets/vecteezy_airplane-travel-path-clip-art_21970038.png");
+  background-repeat: no-repeat; */
+}
+
+.containerMain .containerImageMain {
+  width: 100%;
+  height: max-content;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.containerImageMain img {
+  border-radius: 10px;
+  transform: scale(1);
+  animation-name: scale-animation;
+  animation-duration: 1500ms;
+  animation-iteration-count: 1;
+  animation-timing-function: ease;
+}
+
+@keyframes scale-animation {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.containerMessage {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+}
+
+.containerMessage p {
+  height: max-content;
+  width: max-content;
+  font-size: 3.5em;
+  font-family: sans-serif;
+  text-align: center;
+  color: white;
+  position: relative;
+}
+
+.containerMessage p::after {
+  content: "";
+  position: absolute;
+  left: 100%;
+  height: 100%;
+  width: 0%;
+  background-color: #04243c;
+  border-left: none;
+  animation: typing 1500ms steps(30) 1;
+}
+
+@keyframes typing {
+  0% {
+    left: 0%;
+    width: 100%;
+    border-left: 2px solid white;
+  }
+
+  50%,
+  70%,
+  99% {
+    border-left: 2px solid white;
+  }
+
+  100% {
+    left: 100%;
+    width: 0%;
+  }
+}
+
+.searchBar {
+  width: 60%;
+  height: max-content;
+  padding: 5px;
+  background-color: #0474fc;
+  border-radius: 9px;
+  position: absolute;
+  top: 85%;
+  z-index: 0;
+}
+
+.containerText {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 1.6em;
+  font-weight: 600;
+  font-style: italic;
+  font-family: serif;
+}
+
+.searchBar .containerArriveStartAero {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.searchBar .containerArriveStartAero .vol {
+  background-color: white;
+  width: 40%;
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.vol img {
+  width: 25px;
+  height: 25px;
+}
+
+.vol select {
+  width: 100%;
+  outline: none;
+  border: none;
+  font-size: 1.1em;
+}
+
+.containerDate {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 10px;
+}
+
+.containerDate img {
+  width: 25px;
+  height: 25px;
+}
+
+.containerDate .Date,
+.containerDate .containerAddPassager {
+  width: 30%;
+  height: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.containerDate .Date input {
+  height: 40px;
+  width: 100%;
+  font-size: 1.2em;
+  outline: none;
+  border: none;
+}
+
+.containerAddPassager .addPassager {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: max-content;
+  justify-content: space-between;
+  font-size: 1.2em;
+}
+
+.addPassager button {
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  border: none;
+  background-color: #0474fc;
+  color: white;
+  font-size: 1.1em;
+}
+
+.addPassager .containerButton {
+  display: flex;
+  flex-direction: row;
+  width: 60%;
+  justify-content: space-evenly;
+}
+
+.containerButton button {
+  box-shadow: 0px 5px rgba(1 1 1/0.7);
+}
+
+.containerButton button:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.containerButton button:active {
+  opacity: 0.7;
+  box-shadow: 0px 3px rgba(1 1 1/0.7);
+  transform: translateY(2px);
+  cursor: pointer;
+}
+
+.containerButtonSubmit {
+  width: 100%;
+  margin-top: 10px;
+  height: max-content;
+  display: flex;
+  justify-content: center;
+}
+
+.containerButtonSubmit button {
+  padding: 10px 20px;
+  font-size: 1.1em;
+  background-color: black;
+  color: white;
+  border-radius: 15px;
+  border: none;
+}

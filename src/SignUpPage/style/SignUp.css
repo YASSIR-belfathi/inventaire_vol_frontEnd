@@ -1,0 +1,190 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+.containerSignUp {
+  background-image: url("C:/Users/YASSIR/Desktop/inventaire_project_app/src/SignUpPage/assets/3522195.jpg");
+  width: 100%;
+  height: 100vh;
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: row;
+}
+
+.containerSignUp .containerImage {
+  width: 35%;
+  height: max-content;
+}
+
+.containerImage img {
+  width: 100%;
+  height: 100vh;
+}
+
+/* la partie du formulaire */
+
+.containerForm {
+  width: 65%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 50px;
+  justify-content: center;
+  position: relative;
+}
+
+.containerForm .containerHeader {
+  width: 100%;
+  height: max-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  position: absolute;
+  top: 0px;
+}
+
+.containerForm .containerHeader img {
+  width: 150px;
+  height: 50px;
+  object-fit: scale-down;
+}
+
+.containerForm .containerHeader img:hover {
+  cursor: pointer;
+}
+
+.containerForm .containerHeader img:active {
+  cursor: pointer;
+}
+
+.containerForm .containerTitle h1 {
+  color: #35599a;
+  width: max-content;
+  height: max-content;
+  text-align: center;
+  font-size: 2em;
+  position: relative;
+  font-weight: 500;
+}
+
+.containerForm .containerTitle h1::after {
+  content: "";
+  width: 0%;
+  height: 100%;
+  border-left: none;
+  background-color: #eeedf4;
+  position: absolute;
+  left: 100%;
+  animation: typing 2s steps(19) 1;
+}
+
+@keyframes typing {
+  0% {
+    border-left: 2px solid black;
+    width: 100%;
+    left: 0%;
+  }
+
+  50%,
+  70%,
+  99% {
+    border-left: 2px solid black;
+  }
+
+  100% {
+    width: 0%;
+    left: 100%;
+    border-left: none;
+  }
+}
+
+.containerForm .containerBlock {
+  width: max-content;
+  height: max-content;
+  background-color: #eeedf4;
+  padding: 10px 30px;
+  border-radius: 15px;
+  transform: scale(1.2);
+}
+
+.containerForm .containerBlock > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 15px 0px;
+}
+
+.containerForm .containerBlock .containerSubmitButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.containerForm .containerBlock .containerSubmitButton button {
+  padding: 10px 15px;
+  font-size: 1.1em;
+  border-radius: 15px;
+  border: none;
+  color: white;
+  background-color: #0474fc;
+}
+
+.containerForm .containerBlock .containerSubmitButton button:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.containerForm .containerSubmitButton button:active {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.containerForm .containerBlock > div > div {
+  display: flex;
+  flex-direction: column;
+  height: max-content;
+  width: 45%;
+}
+
+.containerForm .containerBlock > div > div > label {
+  font-size: 1em;
+  margin-bottom: 5px;
+}
+
+.containerForm .containerBlock > div > div > label::after {
+  content: "*";
+  color: red;
+}
+
+.containerForm .containerBlock > div > div > input {
+  outline: none;
+  border: none;
+  font-size: 1em;
+  padding: 2px 5px;
+  border-radius: 3px;
+}
+
+.containerForm .containerBlock .containerOption {
+  width: 100%;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+}
+.containerForm .containerBlock .containerOption > div {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: max-content;
+}
+
+.containerForm .containerBlock .containerOption input[type="checkbox"]:checked {
+  accent-color: blue;
+}
+
+.containerForm .containerBlock .containerOption label::after {
+  content: "";
+}
