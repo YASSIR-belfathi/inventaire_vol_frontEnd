@@ -1,3 +1,5 @@
+import React from "react";
+// import { useNavigate } from "react-router-dom";
 import Image from "../assets/360_F_267201056_wcEH6uQ6xu5oNHtY9Hq3YOhDwe1zk1XX.jpg";
 
 export default function Card({

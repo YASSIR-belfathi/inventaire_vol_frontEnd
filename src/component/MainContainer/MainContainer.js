@@ -1,72 +1,93 @@
 import React from "react";
-//import Banner from "../Banner/Banner";
-import FlightList from "../FlightList/FlightList";
+import { useLocation } from "react-router-dom";
 import PassengerInfo from "../PassengerInfo/PassengerInfo";
 import Header from "../../home_page/components/header";
-
+import airportimage from "./assets/airport1.jpg";
 const MainContainer = () => {
+  const location = useLocation();
+  const flightData = location.state || {};
+
   return (
     <>
       <Header />
+<<<<<<< HEAD
       <div className="max-w-screen-lg mx-auto bg-white shadow-md overflow-hidden">
+=======
+      <div className="max-w-screen-lg mx-auto bg-white shadow-md overflow-hidden mt-8">
+>>>>>>> 26e55a4a6f916e92fc247cc27b97450ba729d671
         {/* Image en haut */}
-        <div className="h-64 w-full">
+        <div className="relative">
           <img
-            src="https://images.unsplash.com/photo-1488085061387-422e29b40080?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGF2aWF0aW9ufGVufDB8fDB8fHww"
+            src={airportimage}
             alt="Bandeau supérieur"
-            className="object-cover w-full h-full"
+            className="object-cover w-full h-64"
           />
+          <div className="absolute inset-0 bg-gradient-to-b from-blue-500 via-transparent to-transparent opacity-75"></div>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <h1 className="text-4xl font-bold text-white shadow-lg">
+              Préparez votre voyage !
+            </h1>
+          </div>
         </div>
 
         {/* Champs de réservation */}
-        <div className="flex items-center justify-between gap-4 p-4 bg-blue-50">
-          <div className="flex-1">
-            <label className="block text-gray-700">De :</label>
-            <input
-              type="text"
-              placeholder="Ville de départ"
-              className="w-full border border-gray-300 rounded-lg p-2"
-            />
+        <div className="bg-white p-6 shadow-lg rounded-lg m-7">
+          <h2 className="text-2xl font-bold text-blue-700 mb-6 text-center">
+            Détails de votre réservation
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+            <div className="flex flex-col">
+              <label className="font-semibold text-gray-700">De :</label>
+              <input
+                type="text"
+                placeholder="Ville de départ"
+                className="border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
+                value={flightData.departureCity || ""}
+                readOnly
+              />
+            </div>
+            <div className="flex flex-col">
+              <label className="font-semibold text-gray-700">À :</label>
+              <input
+                type="text"
+                placeholder="Ville d'arrivée"
+                className="border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
+                value={flightData.arrivalCity || ""}
+                readOnly
+              />
+            </div>
+            <div className="flex flex-col">
+              <label className="font-semibold text-gray-700">Date d'aller :</label>
+              <input
+                type="date"
+                className="border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
+                value={flightData.departureDate || ""}
+                readOnly
+              />
+            </div>
+            <div className="flex flex-col">
+              <label className="font-semibold text-gray-700">Date de retour :</label>
+              <input
+                type="date"
+                className="border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
+                value={flightData.returnDate || ""}
+                readOnly
+              />
+            </div>
+            <div className="flex flex-col">
+              <label className="font-semibold text-gray-700">Prix :</label>
+              <input
+                type="text"
+                className="border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
+                value={flightData.price || ""}
+                readOnly
+              />
+            </div>
           </div>
-          <div className="flex-1">
-            <label className="block text-gray-700">À :</label>
-            <input
-              type="text"
-              placeholder="Ville d'arrivée"
-              className="w-full border border-gray-300 rounded-lg p-2"
-            />
-          </div>
-          <div className="flex-1">
-            <label className="block text-gray-700">Date d'aller :</label>
-            <input
-              type="date"
-              className="w-full border border-gray-300 rounded-lg p-2"
-            />
-          </div>
-          <div className="flex-1">
-            <label className="block text-gray-700">Date de retour :</label>
-            <input
-              type="date"
-              className="w-full border border-gray-300 rounded-lg p-2"
-            />
-          </div>
-          <div className="flex-1">
-            <label className="block text-gray-700">Passagers :</label>
-            <input
-              type="number"
-              min="1"
-              className="w-full border border-gray-300 rounded-lg p-2"
-            />
-          </div>
-        </div>
-
-        {/* Liste des vols */}
-        <div className="p-4">
-          <FlightList />
         </div>
 
         {/* Informations des passagers */}
-        <div className="p-4">
+        <div className="p-6 bg-white shadow-lg rounded-lg mt-6">
           <PassengerInfo />
         </div>
       </div>
