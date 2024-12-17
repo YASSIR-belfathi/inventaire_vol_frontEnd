@@ -1,0 +1,41 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+.containerCreateVol {
+  width: 86%;
+  height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.containerCreateVol .containerBreadCrumbs {
+  width: 100%;
+  height: max-content;
+}
+
+.containerCreateVol .containerContaintCreation {
+  width: 100%;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 60px;
+}
+
+.containerContaintCreation .containerTitleCreate {
+  width: 100%;
+  height: max-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.containerContaintCreation .containerTitleCreate h1 {
+  font-size: 3em;
+  font-weight: 600;
+  font-family: sans-serif;
+}

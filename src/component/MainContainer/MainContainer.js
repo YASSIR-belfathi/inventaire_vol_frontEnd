@@ -8,7 +8,7 @@ const MainContainer = () => {
   return (
     <>
       <Header />
-      <div className="max-w-screen-lg mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+      <div className="max-w-screen-lg mx-auto bg-white shadow-md overflow-hidden">
         {/* Image en haut */}
         <div className="h-64 w-full">
           <img
