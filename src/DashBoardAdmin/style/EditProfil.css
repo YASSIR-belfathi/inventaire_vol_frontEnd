@@ -1,0 +1,110 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+.containerEditProfil {
+  width: 86%;
+  height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.containerEditProfil .containerContent {
+  width: 100%;
+  height: max-content;
+  padding: 10px 60px;
+  /* background-color: #0474fc; */
+  display: flex;
+  flex-direction: column;
+}
+
+.containerEditProfil .containerContent .containerInfoImgUser {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: max-content;
+  margin-bottom: 20px;
+  justify-content: space-between;
+}
+
+.containerInfoImgUser img {
+  width: 60px;
+  height: 60px;
+}
+
+.containerInfoImgUser img:hover {
+  cursor: pointer;
+}
+
+.containerEditProfil
+  .containerContent
+  .containerInfoImgUser
+  .containerInfoUser {
+  font-size: 3em;
+  font-weight: 600;
+  font-family: sans-serif;
+}
+
+.containerEditProfil .editInfo {
+  width: 100%;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(222, 222, 222);
+  padding: 10px 20px;
+  border-radius: 7px;
+}
+
+.containerEditProfil .editInfo .childrenEdit {
+  width: 100%;
+  height: max-content;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.containerEditProfil .editInfo .childrenEdit > div {
+  display: flex;
+  flex-direction: column;
+  height: max-content;
+  width: 45%;
+  font-size: 1.2em;
+}
+
+.containerEditProfil .editInfo .childrenEdit > div > input {
+  padding: 4px 2px;
+  border-radius: 3px;
+  outline: none;
+  border: none;
+}
+
+.editInfo .containerButtonUpdate {
+  width: 100%;
+  height: max-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: 50px;
+}
+
+.editInfo .containerButtonUpdate img {
+  width: 25px;
+  height: 25px;
+  margin-right: 5px;
+}
+
+.editInfo .containerButtonUpdate button {
+  display: flex;
+  flex-direction: row;
+  width: max-content;
+  height: max-content;
+  padding: 10px 20px;
+  background-color: #0474fc;
+  border: none;
+  border-radius: 7px;
+  color: white;
+}

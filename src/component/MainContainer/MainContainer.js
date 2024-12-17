@@ -40,7 +40,11 @@ const MainContainer = () => {
   return (
     <>
       <Header />
+<<<<<<< HEAD
+      <div className="max-w-screen-lg mx-auto bg-white shadow-md overflow-hidden">
+=======
       <div className="max-w-screen-lg mx-auto bg-white shadow-md overflow-hidden mt-8">
+>>>>>>> 26e55a4a6f916e92fc247cc27b97450ba729d671
         {/* Image en haut */}
         <div className="relative">
           <img

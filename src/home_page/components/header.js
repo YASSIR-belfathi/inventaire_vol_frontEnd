@@ -5,6 +5,7 @@ import iconDashboard from "../assets/assetsHeader/icons8-dashboard-100.png";
 import iconLogOut from "../assets/assetsHeader/icons8-logout-100.png";
 import LogoSite from "../assets/assetsHeader/containerInformation-Photoroom.png";
 import "../style/header.css";
+import { Link } from "react-router";
 
 let count = 0;
 export default function Header() {
@@ -31,10 +32,10 @@ export default function Header() {
       <div className="containerMenu">
         <ul>
           <li>
-            <a href="#">Acceuil</a>
+            <a href="http://localhost:3000/">Acceuil</a>
           </li>
           <li>
-            <a href="#">Reservation</a>
+            <a href="http://localhost:3000/reservation">Reservation</a>
           </li>
           <li>
             <a href="#">Contact</a>
@@ -56,25 +57,33 @@ export default function Header() {
             </div>
             <hr></hr>
             <div className="containerSettings1">
-              <div className="containerProfil">
-                <img src={iconProfile} alt="en-cours" />
-                <p>Profile</p>
-              </div>
-              <div className="containerSettings">
-                <img src={iconSettings} alt="en-cours" />
-                <p>Paramètres</p>
-              </div>
+              <Link to=".">
+                <div className="containerProfil">
+                  <img src={iconProfile} alt="en-cours" />
+                  <p>Profile</p>
+                </div>
+              </Link>
+              <Link to=".">
+                <div className="containerSettings">
+                  <img src={iconSettings} alt="en-cours" />
+                  <p>Paramètres</p>
+                </div>
+              </Link>
             </div>
             <hr></hr>
             <div className="containerSettings2">
-              <div>
-                <img src={iconAddAccount} alt="en-cours" />
-                <p>Ajouter un compte</p>
-              </div>
-              <div>
-                <img src={iconDashboard} alt="en-cours" />
-                <p>Dashboard</p>
-              </div>
+              <Link to=".">
+                <div>
+                  <img src={iconAddAccount} alt="en-cours" />
+                  <p>Ajouter un compte</p>
+                </div>
+              </Link>
+              <Link to="http://localhost:3000/dashboard">
+                <div>
+                  <img src={iconDashboard} alt="en-cours" />
+                  <p>Dashboard</p>
+                </div>
+              </Link>
             </div>
             <hr></hr>
             <div>

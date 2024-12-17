@@ -6,6 +6,9 @@ import "./Style.css";
 import React from "react";
 import MainContainer from "./component/MainContainer/MainContainer";
 import Login from "./component/Login/Login";
+import DashBoardAdmin from "./DashBoardAdmin/DashBoardAdmin.js";
+import EditProfil from "./DashBoardAdmin/components/EditProfil.js";
+import CreateVol from "./DashBoardAdmin/components/CreateVol.js";
 
 function App() {
   return (
@@ -20,7 +23,10 @@ function App() {
           {/* Route pour la page de login */}
           <Route path="/login" element={<Login />} />
           {/* Exemple de dashboard */}
-          <Route path="/dashboard" element={<h1>Bienvenue au Dashboard</h1>} />
+          <Route path="/dashboard" element={<DashBoardAdmin />}>
+            <Route path="editProfile" element={<EditProfil />} />
+            <Route path="CreateVol" element={<CreateVol />} />
+          </Route>
         </Routes>
       </div>
     </Router>
