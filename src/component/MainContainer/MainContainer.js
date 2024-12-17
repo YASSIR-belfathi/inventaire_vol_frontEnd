@@ -3,9 +3,39 @@ import { useLocation } from "react-router-dom";
 import PassengerInfo from "../PassengerInfo/PassengerInfo";
 import Header from "../../home_page/components/header";
 import airportimage from "./assets/airport1.jpg";
+
 const MainContainer = () => {
   const location = useLocation();
   const flightData = location.state || {};
+
+  // Fonction pour gérer les données des passagers
+  const handlePassengerConfirmation = (passengerData) => {
+    // Fusionner les détails du vol et les informations des passagers
+    const reservationData = {
+      flightDetails: flightData,
+      passengers: passengerData,
+    };
+
+    console.log("Données à envoyer :", reservationData);
+
+    // Envoyer au backend via fetch
+    fetch("http://localhost:8080/api/reservations", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(reservationData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Réponse du backend :", data);
+        alert("Réservation confirmée avec succès !");
+      })
+      .catch((error) => {
+        console.error("Erreur lors de l'envoi des données :", error);
+        alert("Une erreur est survenue lors de la confirmation.");
+      });
+  };
 
   return (
     <>
@@ -32,51 +62,50 @@ const MainContainer = () => {
             Détails de votre réservation
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+            {/* Champs pré-remplis */}
             <div className="flex flex-col">
               <label className="font-semibold text-gray-700">De :</label>
               <input
                 type="text"
-                placeholder="Ville de départ"
-                className="border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
                 value={flightData.departureCity || ""}
                 readOnly
+                className="border border-gray-300 rounded-lg p-2"
               />
             </div>
             <div className="flex flex-col">
               <label className="font-semibold text-gray-700">À :</label>
               <input
                 type="text"
-                placeholder="Ville d'arrivée"
-                className="border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
                 value={flightData.arrivalCity || ""}
                 readOnly
+                className="border border-gray-300 rounded-lg p-2"
               />
             </div>
             <div className="flex flex-col">
               <label className="font-semibold text-gray-700">Date d'aller :</label>
               <input
                 type="date"
-                className="border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
                 value={flightData.departureDate || ""}
                 readOnly
+                className="border border-gray-300 rounded-lg p-2"
               />
             </div>
             <div className="flex flex-col">
               <label className="font-semibold text-gray-700">Date de retour :</label>
               <input
                 type="date"
-                className="border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
                 value={flightData.returnDate || ""}
                 readOnly
+                className="border border-gray-300 rounded-lg p-2"
               />
             </div>
             <div className="flex flex-col">
               <label className="font-semibold text-gray-700">Prix :</label>
               <input
                 type="text"
-                className="border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
                 value={flightData.price || ""}
                 readOnly
+                className="border border-gray-300 rounded-lg p-2"
               />
             </div>
           </div>
@@ -84,7 +113,7 @@ const MainContainer = () => {
 
         {/* Informations des passagers */}
         <div className="p-6 bg-white shadow-lg rounded-lg mt-6">
-          <PassengerInfo />
+          <PassengerInfo onConfirm={handlePassengerConfirmation} />
         </div>
       </div>
     </>
