@@ -10,11 +10,7 @@ const MainContainer = () => {
   return (
     <>
       <Header />
-<<<<<<< HEAD
-      <div className="max-w-screen-lg mx-auto bg-white shadow-md overflow-hidden">
-=======
       <div className="max-w-screen-lg mx-auto bg-white shadow-md overflow-hidden mt-8">
->>>>>>> 26e55a4a6f916e92fc247cc27b97450ba729d671
         {/* Image en haut */}
         <div className="relative">
           <img
@@ -57,18 +53,22 @@ const MainContainer = () => {
               />
             </div>
             <div className="flex flex-col">
-              <label className="font-semibold text-gray-700">Date d'aller :</label>
+              <label className="font-semibold text-gray-700">
+                Date d'aller :
+              </label>
               <input
-                type="date"
+                type="text"
                 className="border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
                 value={flightData.departureDate || ""}
                 readOnly
               />
             </div>
             <div className="flex flex-col">
-              <label className="font-semibold text-gray-700">Date de retour :</label>
+              <label className="font-semibold text-gray-700">
+                Date de retour :
+              </label>
               <input
-                type="date"
+                type="text"
                 className="border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
                 value={flightData.returnDate || ""}
                 readOnly

@@ -43,21 +43,22 @@ export default function Form() {
 
   useEffect(() => {
     let passager = {
-      FirstName: prenom,
-      LastName: nom,
+      name: prenom,
+      prenom: nom,
       email: email,
-      nationnalite: nationalite,
-      num_carte_identifie: CIN,
-      num_passport: passport,
-      dateNaissance: dateNaissance,
+      nationalite: nationalite,
+      CIN: CIN,
+      numPass: passport,
+      DateNaissance: dateNaissance,
       telephone: telephone,
       password: password,
+      role: "user",
     };
     console.log(execute);
     if (execute) {
       console.log(execute);
       axios
-        .post("http://localhost:8080/api/auth/signup/post", passager)
+        .post("http://localhost:8080/api/auth/signup", passager)
         .then((response) => console.log(response))
         .then((error) => console.log(error));
     }

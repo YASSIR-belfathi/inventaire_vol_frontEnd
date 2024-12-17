@@ -16,9 +16,9 @@
   width: 100%;
   height: max-content;
   padding: 10px 60px;
-  /* background-color: #0474fc; */
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .containerEditProfil .containerContent .containerInfoImgUser {
@@ -49,12 +49,12 @@
 }
 
 .containerEditProfil .editInfo {
-  width: 100%;
+  width: 80%;
   height: max-content;
   display: flex;
   flex-direction: column;
   background-color: rgb(222, 222, 222);
-  padding: 10px 20px;
+  padding: 10px 70px;
   border-radius: 7px;
 }
 
@@ -64,7 +64,7 @@
   margin-bottom: 10px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 .containerEditProfil .editInfo .childrenEdit > div {

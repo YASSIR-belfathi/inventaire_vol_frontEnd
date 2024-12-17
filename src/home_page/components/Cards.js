@@ -9,9 +9,9 @@ export default function Cards() {
   const [ListCard, setListCard] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/vols")
+    fetch("http://localhost:8080/api/vols/get-vols")
       .then((response) => response.json())
-      .then((result) => setListCard(result));
+      .then((result) => console.log(setListCard(result)));
   }, []);
 
   console.log(ListCard[0]);
@@ -34,6 +34,9 @@ export default function Cards() {
     let date_arrivee = new Date(element.date_vol_arrive).toLocaleDateString(
       "en-GB"
     );
+
+    console.log(date_depart, date_arrivee);
+
     return (
       <Card
         depart={element.aeroport_depart}
@@ -41,7 +44,6 @@ export default function Cards() {
         prix={element.prix_vol}
         dateDepart={date_depart}
         dateArrivee={date_arrivee}
-        lien={element.lien}
         key={element.id}
       />
     );
