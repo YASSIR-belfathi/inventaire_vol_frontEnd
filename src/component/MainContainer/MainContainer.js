@@ -9,17 +9,18 @@ const MainContainer = () => {
   const flightData = location.state || {};
 
   // Fonction pour gérer les données des passagers
-  const handlePassengerConfirmation = (passengerData) => {
+   const handlePassengerConfirmation = (passengerData) => {
     // Fusionner les détails du vol et les informations des passagers
     const reservationData = {
       flightDetails: flightData,
       passengers: passengerData,
+      VolId : flightData.id,
     };
 
     console.log("Données à envoyer :", reservationData);
 
     // Envoyer au backend via fetch
-    fetch("http://localhost:8080/api/reservations", {
+    fetch("http://localhost:8090/api/reservations/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -40,11 +41,9 @@ const MainContainer = () => {
   return (
     <>
       <Header />
-<<<<<<< HEAD
+
       <div className="max-w-screen-lg mx-auto bg-white shadow-md overflow-hidden">
-=======
-      <div className="max-w-screen-lg mx-auto bg-white shadow-md overflow-hidden mt-8">
->>>>>>> 26e55a4a6f916e92fc247cc27b97450ba729d671
+
         {/* Image en haut */}
         <div className="relative">
           <img
@@ -71,7 +70,7 @@ const MainContainer = () => {
               <label className="font-semibold text-gray-700">De :</label>
               <input
                 type="text"
-                value={flightData.departureCity || ""}
+                value={flightData.destinationDepart || ""}
                 readOnly
                 className="border border-gray-300 rounded-lg p-2"
               />
@@ -80,7 +79,7 @@ const MainContainer = () => {
               <label className="font-semibold text-gray-700">À :</label>
               <input
                 type="text"
-                value={flightData.arrivalCity || ""}
+                value={flightData.destinationArrivee || ""}
                 readOnly
                 className="border border-gray-300 rounded-lg p-2"
               />
@@ -88,17 +87,17 @@ const MainContainer = () => {
             <div className="flex flex-col">
               <label className="font-semibold text-gray-700">Date d'aller :</label>
               <input
-                type="date"
-                value={flightData.departureDate || ""}
+                type="text"
+                value={flightData.dateDepart || ""}
                 readOnly
                 className="border border-gray-300 rounded-lg p-2"
               />
             </div>
             <div className="flex flex-col">
-              <label className="font-semibold text-gray-700">Date de retour :</label>
+              <label className="font-semibold text-gray-700">Date d' arrivee :</label>
               <input
-                type="date"
-                value={flightData.returnDate || ""}
+                type="text"
+                value={flightData.dateArrivee || ""}
                 readOnly
                 className="border border-gray-300 rounded-lg p-2"
               />

@@ -1,15 +1,38 @@
 import React from "react";
-// import { useNavigate } from "react-router-dom";
+ import { useNavigate } from "react-router-dom";
 import Image from "../assets/360_F_267201056_wcEH6uQ6xu5oNHtY9Hq3YOhDwe1zk1XX.jpg";
 
 export default function Card({
+  key,
   depart,
   destination,
   dateDepart,
   dateArrivee,
   prix,
   lien,
-}) {
+ }) {
+
+
+  const navigate = useNavigate();
+
+  const handleReservation = () => {
+    const flightData = {
+      destinationDepart: depart,
+      destinationArrivee: destination,
+      dateDepart: dateDepart,
+      dateArrivee: dateArrivee,
+      price: prix,
+      id:key,
+    };
+
+    // Navigate to ReservationForm with state
+    navigate("/reservation", { state: flightData });
+  };
+
+
+
+
+
   return (
     <div className="card blockElement">
       <div className="containerImage">
@@ -30,7 +53,8 @@ export default function Card({
         </p>
       </div>
       <div className="ReservationButton">
-        <a href={lien}>Réservez</a>
+        <a href={lien} onClick={handleReservation}>Réservez</a>
+
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const PassengerInfo = () => {
+const PassengerInfo = ({ onConfirm }) => {
   const [passengers, setPassengers] = useState([
     { firstName: "", lastName: "", age: "" },
   ]);
@@ -16,8 +16,14 @@ const PassengerInfo = () => {
   };
 
   const handleConfirmation = () => {
+    // Étape 1 : Confirmation locale
     console.log("Passagers enregistrés :", passengers);
     alert("Passagers enregistrés avec succès !");
+
+    // Étape 2 : Appeler la fonction `onConfirm` si elle est fournie
+    if (onConfirm) {
+      onConfirm(passengers);
+    }
   };
 
   return (

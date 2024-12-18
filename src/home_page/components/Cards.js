@@ -9,7 +9,7 @@ export default function Cards() {
   const [ListCard, setListCard] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/vols")
+    fetch("http://localhost:8090/api/vols/get-vols")
       .then((response) => response.json())
       .then((result) => setListCard(result));
   }, []);
