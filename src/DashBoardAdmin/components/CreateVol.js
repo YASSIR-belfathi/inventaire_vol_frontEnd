@@ -16,6 +16,24 @@ export default function CreateVol() {
   const [Capacitee, setCapacitee] = useState("");
   const [execute, setExecute] = useState(false);
 
+  let ListVille = ["Casablanca", "Paris", "Roma", "Beni-Mellal", "Tanger"];
+  ListVille = ListVille.map((element) => {
+    return element.toUpperCase();
+  });
+
+  const [villeDestination, setVilleDestination] = useState(ListVille);
+  const [villeDepart, setVilleDepart] = useState(ListVille);
+
+  let ListOptionsDepart = [];
+  ListOptionsDepart = villeDepart.map((element) => {
+    return <option value={element}>{element}</option>;
+  });
+
+  let ListOptionDestination = [];
+  ListOptionDestination = villeDestination.map((element) => {
+    return <option value={element}>{element}</option>;
+  });
+
   function CreateVol() {
     if (
       Number === "" ||
@@ -142,10 +160,10 @@ export default function CreateVol() {
                   setAeroportDepart(event.target.value);
                 }}
               >
-                <option value="test">test</option>
-                <option value="test">test</option>
-                <option value="test">test</option>
-                <option value="test">test</option>
+                <option value="" select disabled>
+                  Depart...
+                </option>
+                {ListOptionsDepart}
               </select>
             </div>
             <div className="containerAeroportArrivee">
@@ -157,10 +175,10 @@ export default function CreateVol() {
                   setAeroportArrivee(event.target.value);
                 }}
               >
-                <option value="test">test</option>
-                <option value="test">test</option>
-                <option value="test">test</option>
-                <option value="test">test</option>
+                <option style={{ color: "grey" }} value="" disabled selected>
+                  Destination...
+                </option>
+                {ListOptionDestination}
               </select>
             </div>
           </div>

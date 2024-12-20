@@ -22,6 +22,13 @@ export default function Header() {
     }
   }
 
+  function hideUserSettings() {
+    let containerSettings = document.getElementsByClassName(
+      "containerSettingsOption"
+    );
+    containerSettings[0].style.display = "";
+  }
+
   return (
     <div className="HeaderContainer">
       <div className="containerLogo">

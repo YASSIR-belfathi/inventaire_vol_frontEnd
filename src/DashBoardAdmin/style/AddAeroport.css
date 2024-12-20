@@ -4,20 +4,20 @@
   box-sizing: border-box;
 }
 
-.containerCreateVol {
+.containerAddAeroport {
   width: 86%;
   height: 100vh;
-  overflow-y: auto;
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
 }
 
-.containerCreateVol .containerBreadCrumbs {
+.containerAddAeroport .containerBreadCrumbs {
   width: 100%;
   height: max-content;
 }
 
-.containerCreateVol .containerContaintCreation {
+.containerAddAeroport .containerContent {
   width: 100%;
   height: max-content;
   display: flex;
@@ -26,29 +26,19 @@
   align-items: center;
 }
 
-.containerContaintCreation .containerTitleCreate {
+.containerAddAeroport .containerContent .containerTitle {
   width: 100%;
   height: max-content;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin-bottom: 20px;
   align-items: center;
-}
-
-.containerContaintCreation .containerTitleCreate h1 {
   font-size: 3em;
   font-weight: 600;
   font-family: sans-serif;
 }
 
-.containerContaintCreation .containerTitleCreate img {
-  width: 120px;
-  height: 120px;
-  border-radius: 9px;
-}
-
-.containerContaintCreation .editCreationInfo {
+.containerContent .containerEditInfo {
   width: 80%;
   display: flex;
   flex-direction: column;
@@ -56,7 +46,8 @@
   background-color: rgb(222, 222, 222);
   border-radius: 7px;
 }
-.editCreationInfo > div {
+
+.containerContent .containerEditInfo > div {
   width: 100%;
   height: max-content;
   display: flex;
@@ -65,7 +56,7 @@
   margin-bottom: 20px;
 }
 
-.editCreationInfo > div > div {
+.containerEditInfo > div > div {
   width: 45%;
   height: max-content;
   display: flex;
@@ -73,24 +64,31 @@
   font-size: 1.2em;
 }
 
-.editCreationInfo > div > div > input,
-.editCreationInfo > div > div > select {
+.containerEditInfo > div > div > input,
+.containerEditInfo > div > div > select {
   padding: 4px 2px;
   border-radius: 3px;
-  outline: none;
   border: none;
+  outline: none;
 }
 
-.editCreationInfo > div > div > label {
+.containerEditInfo > div > div > label {
   margin-bottom: 5px;
 }
 
-.editCreationInfo > div > div > label::after {
+.containerEditInfo > div > div > label::after {
   content: "*";
   color: red;
 }
 
-.editCreationInfo .containerButtonCreate {
+.containerEditInfo > div[class="children4"] {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.containerEditInfo > div[class="continainerButtonSubmit"] {
   width: 100%;
   height: max-content;
   display: flex;
@@ -98,20 +96,17 @@
   justify-content: flex-end;
 }
 
-.editCreationInfo .containerButtonCreate button {
-  display: flex;
-  flex-direction: row;
-  width: max-content;
-  height: max-content;
-  padding: 10px 20px;
-  background-color: #0474fc;
-  border: none;
-  border-radius: 7px;
-  color: white;
-}
-
-.editCreationInfo .containerButtonCreate img {
+.containerEditInfo .continainerButtonSubmit img {
   width: 25px;
   height: 25px;
-  margin-right: 5px;
+}
+
+.continainerButtonSubmit button {
+  display: flex;
+  flex-direction: row;
+  padding: 10px 20px;
+  background-color: #0474fc;
+  color: white;
+  border-radius: 7px;
+  cursor: pointer;
 }

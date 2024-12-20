@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AtterissageVol from "../assets/assetsMain/atterrissage-davion.png";
 import DecollageVol from "../assets/assetsMain/decoller-de-lavion.png";
 import DateStartIcon from "../assets/assetsMain/calendar.png";
 import IconPassager from "../assets/assetsMain/user.png";
+import { useNavigate } from "react-router";
 // import { ListCard } from "./Cards";
 
 export default function SearchBar() {
@@ -11,6 +12,8 @@ export default function SearchBar() {
   const [Decollage, setDecollage] = useState("");
   const [dateStart, setDateStart] = useState("jj-mm-aaaa");
   const [dateArrive, setDateArrive] = useState("jj-m-aaaa");
+  const navigate = useNavigate();
+  let executeSearch = false;
 
   // let ListCardChoice = ListCard.map((element) => {
   //   if (
@@ -31,7 +34,30 @@ export default function SearchBar() {
   //   }
   // });
 
-  function searchVol() {}
+  function searchVol() {
+    executeSearch = true;
+    fetch("http://localhost:8080/api/vols/get-vols")
+      .then((response) => response.json())
+      .then((json) => {
+        console.log(json);
+        const result = json.filter((vol) => {
+          let resultFilter =
+            vol &&
+            vol.aeroport_depart.includes(Decollage) &&
+            vol.aeroport_arrive.includes(atterrissage) &&
+            vol.date_vol_depart.includes(dateStart) &&
+            vol.date_vol_arrive.includes(dateArrive) &&
+            vol.capacite >= addPassager;
+          return resultFilter;
+        });
+        navigate("/", { state: { result, executeSearch, update: true } });
+      });
+  }
+
+  // function annulerSearch() {
+  //   executeSearch = false;
+  //   navigate("/", { state: { result: [], executeSearch } });
+  // }
 
   return (
     <div className="searchBar">
@@ -118,6 +144,7 @@ export default function SearchBar() {
         <button type="submit" onClick={searchVol}>
           Chercher
         </button>
+        <button>Annuler</button>
       </div>
     </div>
   );

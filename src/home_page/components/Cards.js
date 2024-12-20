@@ -1,20 +1,21 @@
 import { useEffect, useState } from "react";
 import Card from "./card";
 import "../style/Cards.css";
-import axios from "axios";
 
-let counter = 0;
-
-export default function Cards() {
+export default function Cards({ ListSearchBar, executeSearch }) {
   const [ListCard, setListCard] = useState([]);
 
-  useEffect(() => {
-    fetch("http://localhost:8080/api/vols/get-vols")
-      .then((response) => response.json())
-      .then((result) => console.log(setListCard(result)));
-  }, []);
+  console.log(ListSearchBar, executeSearch);
 
-  console.log(ListCard[0]);
+  useEffect(() => {
+    if (executeSearch) {
+      setListCard(ListSearchBar);
+    } else {
+      fetch("http://localhost:8080/api/vols/get-vols")
+        .then((response) => response.json())
+        .then((result) => console.log(setListCard(result)));
+    }
+  }, [executeSearch, ListSearchBar]);
 
   function displayButton(element) {
     const button_display = document.getElementsByClassName("buttonLoadMore")[0];
@@ -26,6 +27,8 @@ export default function Cards() {
   }
 
   const [numberVol, setNumberVol] = useState(8);
+
+  console.log("ListCard:", ListCard);
 
   const ListCardElement = ListCard.map((element) => {
     let date_depart = new Date(element.date_vol_depart).toLocaleDateString(
