@@ -1,16 +1,16 @@
-const express = require("express");
-const multer = require("multer");
-const path = require("path");
+import express from "express";
+import multer, { diskStorage } from "multer";
+import { extname } from "path";
 
 const app = express();
-const port = 5000;
+const port = 3000;
 
-const storage = multer.diskStorage({
+const storage = diskStorage({
   destination: (req, file, cb) => {
     cb(null, "uploads/");
   },
   filename: (req, file, cb) => {
-    cb(null, Date.now() + path.extname(file.originalname));
+    cb(null, Date.now() + extname(file.originalname));
   },
 });
 

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Header from "../../home_page/components/header";
 import airlineimage from "./assets/airline.jpg";
+import axios from "axios";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -9,18 +10,28 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-
     // Stocker temporairement les données pour l'intégration backend
+
     const userData = { email, password };
     console.log("Données utilisateur : ", userData);
 
+    axios
+      .post("http://localhost:8080/api/auth/login", userData)
+      .then((response) => {
+        console.log(response);
+        window.localStorage.setItem("authen_jwt", response.data.token);
+        navigate("/");
+      })
+      .catch((error) => {
+        alert(error.code);
+      });
     // Simuler une validation simple
-    if (email === "test@example.com" && password === "password") {
-      alert("Connexion réussie !");
-      navigate("/dashboard");
-    } else {
-      alert("Identifiants incorrects");
-    }
+    // if (email === "test@example.com" && password === "password") {
+    //   alert("Connexion réussie !");
+    //   navigate("/dashboard");
+    // } else {
+    //   alert("Identifiants incorrects");
+    // }
   };
 
   return (
@@ -34,10 +45,7 @@ const Login = () => {
       >
         <div className="flex flex-col w-full max-w-4xl p-6 bg-white bg-opacity-80 backdrop-blur-md rounded-lg shadow-lg md:flex-row">
           {/* Colonne gauche : Formulaire */}
-          <form
-            className="flex-1 p-6"
-            onSubmit={handleLogin}
-          >
+          <form className="flex-1 p-6" onSubmit={handleLogin}>
             <h2 className="text-3xl font-bold mb-6 text-gray-800">Connexion</h2>
 
             <div className="mb-4">
@@ -84,7 +92,8 @@ const Login = () => {
           </form>
 
           {/* Colonne droite : Image ou texte */}
-          <div className="hidden md:flex flex-1 bg-cover bg-center rounded-lg"
+          <div
+            className="hidden md:flex flex-1 bg-cover bg-center rounded-lg"
             style={{
               backgroundImage:
                 "url('https://images.unsplash.com/photo-1496284045406-df30a9829b2e?w=1000&auto=format&fit=crop&q=60')",

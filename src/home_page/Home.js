@@ -6,7 +6,7 @@ import { useLocation } from "react-router";
 
 export default function Home() {
   const location = useLocation();
-  console.log(location.state);
+
   return (
     <>
       <Header />
@@ -15,8 +15,8 @@ export default function Home() {
         <Cards />
       ) : (
         <Cards
-          ListSearchBar={location.state.result || ""}
-          executeSearch={location.state.executeSearch != null || false}
+          ListSearchBar={location.state.result}
+          executeSearch={location.state.executeSearch}
         />
       )}
       <Footer />

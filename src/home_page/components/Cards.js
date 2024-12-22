@@ -5,8 +5,6 @@ import "../style/Cards.css";
 export default function Cards({ ListSearchBar, executeSearch }) {
   const [ListCard, setListCard] = useState([]);
 
-  console.log(ListSearchBar, executeSearch);
-
   useEffect(() => {
     if (executeSearch) {
       setListCard(ListSearchBar);
@@ -37,8 +35,6 @@ export default function Cards({ ListSearchBar, executeSearch }) {
     let date_arrivee = new Date(element.date_vol_arrive).toLocaleDateString(
       "en-GB"
     );
-
-    console.log(date_depart, date_arrivee);
 
     return (
       <Card

@@ -1,0 +1,103 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+.containerListVol {
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.containerListVol .containerBreadCrumbs {
+  width: 100%;
+  height: max-content;
+}
+
+.containerListVol .containerContent {
+  width: 100%;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 15px;
+  align-items: center;
+}
+.containerListVol .containerContent .containerTitle {
+  width: 100%;
+  height: max-content;
+  font-size: 3em;
+  font-weight: 600;
+  font-family: sans-serif;
+  display: flex;
+  align-items: center;
+}
+
+.containerListVol .containerContent .containerList {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  width: 100%;
+  height: max-content;
+  border: 3px solid black;
+  border-radius: 4px;
+}
+
+.containerListVol .containerContent .containerList .containerVol {
+  width: 100%;
+  height: max-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+  font-size: 1.5em;
+  font-weight: 400;
+}
+
+.containerListVol
+  .containerContent
+  .containerList
+  .containerVol
+  .containerDestinationDepart {
+  border-right: 2px solid black;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.containerDestinationDepart > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.containerVol .containerButton {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  width: max-content;
+  align-items: center;
+}
+
+.containerVol .containerButton button {
+  background-color: red;
+}
+
+.containerVol .containerButton .buttonModify {
+  margin-right: 10px;
+  background-color: green;
+}
+
+.containerButton button {
+  width: max-content;
+  height: max-content;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 9px;
+  box-shadow: none;
+  color: white;
+}

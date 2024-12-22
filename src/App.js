@@ -10,6 +10,7 @@ import DashBoardAdmin from "./DashBoardAdmin/DashBoardAdmin.js";
 import EditProfil from "./DashBoardAdmin/components/EditProfil.js";
 import CreateVol from "./DashBoardAdmin/components/CreateVol.js";
 import AddAeroport from "./DashBoardAdmin/components/AddAeroport.js";
+import ListVol from "./DashBoardAdmin/components/ListVol.js";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             <Route path="editProfile" element={<EditProfil />} />
             <Route path="CreateVol" element={<CreateVol />} />
             <Route path="addAeroport" element={<AddAeroport />} />
+            <Route path="ListVol" element={<ListVol />} />
           </Route>
         </Routes>
       </div>

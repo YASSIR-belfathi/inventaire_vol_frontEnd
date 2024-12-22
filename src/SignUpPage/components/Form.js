@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import IconWeb from "../../home_page/assets/assetsHeader/containerInformation-Photoroom.png";
 import axios from "axios";
+import { useNavigate } from "react-router";
 
 export default function Form() {
   const [prenom, setPrenom] = useState("");
@@ -14,6 +15,7 @@ export default function Form() {
   const [password, setPassword] = useState("");
   const [validationPassword, setValidationPassword] = useState("");
   const [execute, setExecute] = useState(false);
+  const navigate = useNavigate();
 
   function verification() {
     if (
@@ -35,7 +37,6 @@ export default function Form() {
         alert("le mot de passe n'est pas le même");
         setExecute(false);
       } else {
-        console.log("bonjour");
         setExecute(true);
       }
     }
@@ -43,13 +44,13 @@ export default function Form() {
 
   useEffect(() => {
     let passager = {
-      name: prenom,
-      prenom: nom,
+      first_name: prenom,
+      last_name: nom,
       email: email,
       nationalite: nationalite,
-      CIN: CIN,
-      numPass: passport,
-      DateNaissance: dateNaissance,
+      cin: CIN,
+      num_pass: passport,
+      date_naissance: dateNaissance,
       telephone: telephone,
       password: password,
       role: "user",
@@ -59,8 +60,13 @@ export default function Form() {
       console.log(execute);
       axios
         .post("http://localhost:8080/api/auth/signup", passager)
-        .then((response) => console.log(response))
-        .then((error) => console.log(error));
+        .then((response) => {
+          console.log(response);
+          navigate("/login");
+        })
+        .catch((error) => {
+          alert(error.code);
+        });
     }
   }, [
     prenom,
@@ -73,6 +79,7 @@ export default function Form() {
     telephone,
     password,
     execute,
+    navigate,
   ]);
 
   return (

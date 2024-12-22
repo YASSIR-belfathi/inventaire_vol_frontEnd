@@ -43,7 +43,9 @@ export default function AddAeroport() {
       axios
         .post("http://localhost:8080/api/admin/aeroports/create", dataAeroport)
         .then((response) => console.log(response))
-        .then((error) => console.log(error));
+        .catch((error) => {
+          console.log(error);
+        });
     }
   }, [execute, Aeroport]);
 

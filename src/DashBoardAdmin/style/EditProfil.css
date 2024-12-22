@@ -15,7 +15,7 @@
 .containerEditProfil .containerContent {
   width: 100%;
   height: max-content;
-  padding: 10px 60px;
+  padding: 10px 15px;
   display: flex;
   flex-direction: column;
   align-items: center;

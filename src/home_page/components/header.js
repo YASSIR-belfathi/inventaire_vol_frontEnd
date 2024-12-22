@@ -22,13 +22,6 @@ export default function Header() {
     }
   }
 
-  function hideUserSettings() {
-    let containerSettings = document.getElementsByClassName(
-      "containerSettingsOption"
-    );
-    containerSettings[0].style.display = "";
-  }
-
   return (
     <div className="HeaderContainer">
       <div className="containerLogo">
@@ -51,7 +44,13 @@ export default function Header() {
       </div>
       <div className="containerUserSign">
         <div className="ContainerImg">
-          <img src={iconProfile} alt="en-cours" onClick={displayUserSettings} />
+          <Link to="http://localhost:3000/Login">
+            <img
+              src={iconProfile}
+              alt="en-cours"
+              // onClick={displayUserSettings}
+            />
+          </Link>
           <div className="containerSettingsOption">
             <div className="containerUser">
               <div className="containerImageUser">
