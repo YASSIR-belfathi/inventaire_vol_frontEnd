@@ -66,7 +66,7 @@ export default function CreateVol() {
       };
 
       axios
-        .post("http://localhost:8080/api/vols/add-vols", volInfo)
+        .post("http://localhost:8090/api/vols/add-vols", volInfo)
         .then((response) => console.log(response))
         .then((error) => console.log(error));
     }

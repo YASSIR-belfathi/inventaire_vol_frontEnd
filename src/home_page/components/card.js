@@ -24,6 +24,7 @@ export default function Card({
       returnDate: dateArrivee,
       price: prix,
     };
+    console.log("les infos du vol :",flightData)
     navigate("/reservation", { state: flightData });
   };
 

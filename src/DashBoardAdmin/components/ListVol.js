@@ -7,7 +7,7 @@ export default function ListVol() {
   const [ListVol, setListVol] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/vols/get-vols")
+    fetch("http://localhost:8090/api/vols/get-vols")
       .then((response) => response.json())
       .then((data) => {
         setListVol(data);

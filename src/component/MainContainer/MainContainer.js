@@ -7,7 +7,9 @@ import airportimage from "./assets/airport1.jpg";
 const MainContainer = () => {
   const location = useLocation();
   const flightData = location.state || {};
-
+  console.log("les infos du vol :",flightData)
+  
+  console.log("le prix :",flightData.price)
   // Fonction pour gérer les données des passagers
    const handlePassengerConfirmation = (passengerData) => {
     // Fusionner les détails du vol et les informations des passagers
@@ -16,7 +18,7 @@ const MainContainer = () => {
       passengers: passengerData,
       VolId : flightData.id,
     };
-
+    
     console.log("Données à envoyer :", reservationData);
 
     // Envoyer au backend via fetch
@@ -71,7 +73,7 @@ const MainContainer = () => {
               <label className="font-semibold text-gray-700">De :</label>
               <input
                 type="text"
-                value={flightData.destinationDepart || ""}
+                value={flightData.departureCity || ""}
                 readOnly
                 className="border border-gray-300 rounded-lg p-2"
               />
@@ -80,7 +82,7 @@ const MainContainer = () => {
               <label className="font-semibold text-gray-700">À :</label>
               <input
                 type="text"
-                value={flightData.destinationArrivee || ""}
+                value={flightData.arrivalCity || ""}
                 readOnly
                 className="border border-gray-300 rounded-lg p-2"
               />
@@ -92,7 +94,7 @@ const MainContainer = () => {
               <input
                 type="text"
 
-                value={flightData.dateDepart || ""}
+                value={flightData.departureDate || ""}
 
 
                 readOnly
@@ -104,7 +106,7 @@ const MainContainer = () => {
               <label className="font-semibold text-gray-700">Date d' arrivee :</label>
               <input
                 type="text"
-                value={flightData.dateArrivee || ""}
+                value={flightData.returnDate || ""}
 
                 readOnly
                 className="border border-gray-300 rounded-lg p-2"

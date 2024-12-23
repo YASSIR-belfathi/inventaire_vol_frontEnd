@@ -1,5 +1,7 @@
 import React, { useState,useEffect } from "react";
 import PropTypes from "prop-types";
+
+
 const PassengerInfo = ({ onConfirm,flightData = {}}) => {
   const [passengers, setPassengers] = useState([{
     first_name: "",
@@ -11,6 +13,8 @@ const PassengerInfo = ({ onConfirm,flightData = {}}) => {
     telephone: "",
     date_naissance: ""
   }]);
+
+
   const [allPassengers, setAllPassengers] = useState([]);
 
   useEffect(() => {
@@ -39,32 +43,48 @@ const PassengerInfo = ({ onConfirm,flightData = {}}) => {
     setPassengers([...passengers, { firstName: "", lastName: "", age: "" }]);
   };
 
-  const findPassengerId = (firstName, lastName) => {
-    const passenger = allPassengers.find(
-      (p) => p.firstName === firstName && p.lastName === lastName
+  const findPassengerIdByName = (firstName, lastName) => {
+    console.log('Searching for passenger:', { firstName, lastName });
+    console.log('Available passengers:', allPassengers);
+    
+    const foundPassenger = allPassengers.find(
+        p => p.first_name.toLowerCase() === firstName.toLowerCase() &&
+             p.last_name.toLowerCase() === lastName.toLowerCase()
     );
-    return passenger ? passenger.id : null;
-  };
+    
+    console.log('Found passenger:', foundPassenger);
+    return foundPassenger ? foundPassenger.id : null;
+};
 
   const handleFinalConfirmation = () => {
-    const reservationData = {
+    const mainPassengerId = findPassengerIdByName(
+      passengers[0].first_name,
+      passengers[0].last_name
+  );
+
+  if (!mainPassengerId) {
+      alert("Le passager principal n'a pas été trouvé dans la base de données");
+      return;
+  }
+
+  const reservationData = {
       volId: flightData.id,
-      passagerId: findPassengerId(passengers[0].first_name, passengers[0].last_name),
-      prixTotal: parseFloat(flightData.prix) * passengers.length,
+      passagerId: mainPassengerId,
+      prixTotal: parseFloat(flightData.price) * passengers.length,
       additionalPassengers: passengers.map(p => ({
-        first_name: p.first_name,
-        last_name: p.last_name,
-        email: p.email,
-        num_pass: parseInt(p.num_pass),
-        cin: p.cin,
-        nationalite: p.nationalite,
-        telephone: parseInt(p.telephone),
-        date_naissance: p.date_naissance
+          first_name: p.first_name,
+          last_name: p.last_name,
+          email: p.email,
+          num_pass: parseInt(p.num_pass),
+          cin: p.cin,
+          nationalite: p.nationalite,
+          telephone: parseInt(p.telephone),
+          date_naissance: p.date_naissance
       }))
-    };
+  };
 
-    console.log('Sending Reservation Data:', JSON.stringify(reservationData, null, 2));
-
+  console.log('Sending Reservation Data:', JSON.stringify(reservationData, null, 2));
+  
     fetch("http://localhost:8090/api/reservations/create", {
       method: "POST",
       headers: {
