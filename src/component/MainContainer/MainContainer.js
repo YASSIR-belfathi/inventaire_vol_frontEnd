@@ -116,7 +116,7 @@ const MainContainer = () => {
 
         {/* Informations des passagers */}
         <div className="p-6 bg-white shadow-lg rounded-lg mt-6">
-          <PassengerInfo onConfirm={handlePassengerConfirmation} />
+          <PassengerInfo flightData={flightData} onConfirm={handlePassengerConfirmation} />
         </div>
       </div>
     </>

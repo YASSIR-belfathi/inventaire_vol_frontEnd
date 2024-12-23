@@ -1,9 +1,9 @@
 import React from "react";
- import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Image from "../assets/360_F_267201056_wcEH6uQ6xu5oNHtY9Hq3YOhDwe1zk1XX.jpg";
 
 export default function Card({
-  key,
+  id, // Renommé de key à id
   depart,
   destination,
   dateDepart,
@@ -11,7 +11,6 @@ export default function Card({
   prix,
   lien,
  }) {
-
 
   const navigate = useNavigate();
 
@@ -22,16 +21,12 @@ export default function Card({
       dateDepart: dateDepart,
       dateArrivee: dateArrivee,
       price: prix,
-      id:key,
+      id: id, // Utilisation de id au lieu de key
     };
 
     // Navigate to ReservationForm with state
     navigate("/reservation", { state: flightData });
   };
-
-
-
-
 
   return (
     <div className="card blockElement">
@@ -54,7 +49,6 @@ export default function Card({
       </div>
       <div className="ReservationButton">
         <a href={lien} onClick={handleReservation}>Réservez</a>
-
       </div>
     </div>
   );
