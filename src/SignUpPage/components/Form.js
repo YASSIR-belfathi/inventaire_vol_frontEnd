@@ -65,7 +65,7 @@ export default function Form() {
           navigate("/login");
         })
         .catch((error) => {
-          alert(error.code);
+          console.log(error.code);
         });
     }
   }, [

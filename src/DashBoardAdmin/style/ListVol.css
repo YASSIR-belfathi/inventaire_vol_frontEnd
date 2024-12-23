@@ -5,7 +5,7 @@
 }
 
 .containerListVol {
-  width: 100%;
+  width: 86%;
   height: 100vh;
   overflow-y: auto;
   display: flex;
@@ -42,6 +42,7 @@
   height: max-content;
   border: 3px solid black;
   border-radius: 4px;
+  background-color: white;
 }
 
 .containerListVol .containerContent .containerList .containerVol {
@@ -75,6 +76,18 @@
   align-items: center;
 }
 
+.containerDestinationDepart .containerImage {
+  width: 100%;
+  height: max-content;
+  display: flex;
+  justify-content: center;
+}
+
+.containerDestinationDepart .containerDepart,
+.containerDestinationDepart .containerDestination {
+  width: 50%;
+}
+
 .containerVol .containerButton {
   display: flex;
   flex-direction: row;
@@ -92,7 +105,7 @@
   background-color: green;
 }
 
-.containerButton button {
+.containerVol .containerButton button {
   width: max-content;
   height: max-content;
   padding: 10px 20px;

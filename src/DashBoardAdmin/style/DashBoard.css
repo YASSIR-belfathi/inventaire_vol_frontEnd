@@ -9,4 +9,6 @@
   max-height: 100vh;
   display: flex;
   flex-direction: row;
+  background-color: #054474;
+  background-image: url("../assets//w14.jpg");
 }

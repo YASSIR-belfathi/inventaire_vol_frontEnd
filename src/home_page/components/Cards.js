@@ -11,7 +11,8 @@ export default function Cards({ ListSearchBar, executeSearch }) {
     } else {
       fetch("http://localhost:8080/api/vols/get-vols")
         .then((response) => response.json())
-        .then((result) => console.log(setListCard(result)));
+        .then((result) => console.log(setListCard(result)))
+        .catch((error) => console.log(error));
     }
   }, [executeSearch, ListSearchBar]);
 
