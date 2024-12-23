@@ -9,7 +9,9 @@ import Login from "./component/Login/Login";
 import DashBoardAdmin from "./DashBoardAdmin/DashBoardAdmin.js";
 import EditProfil from "./DashBoardAdmin/components/EditProfil.js";
 import CreateVol from "./DashBoardAdmin/components/CreateVol.js";
-import ContactUs from "./component/ContactUs/ContactUs.js";
+import AddAeroport from "./DashBoardAdmin/components/AddAeroport.js";
+import ListVol from "./DashBoardAdmin/components/ListVol.js";
+
 function App() {
   return (
     <Router>
@@ -26,7 +28,10 @@ function App() {
           <Route path="/dashboard" element={<DashBoardAdmin />}>
             <Route path="editProfile" element={<EditProfil />} />
             <Route path="CreateVol" element={<CreateVol />} />
-            {/* Route pour la page Contact Us */}
+
+            <Route path="addAeroport" element={<AddAeroport />} />
+            <Route path="ListVol" element={<ListVol />} />
+
           </Route>
           <Route path="/contact" element={<ContactUs />} />
         </Routes>

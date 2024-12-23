@@ -1,9 +1,9 @@
-import BreadCrumbs from "./BreadCrumbs";
-import "../style/EditProfil.css";
-import LogoButton from "../assets/diskette.png";
-import LogoUser from "../assets/profile.png";
+import BreadCrumbs from "../../DashBoardAdmin/components/BreadCrumbs.js";
+import "../style/EditProfilUser.css";
+import LogoButton from "../../DashBoardAdmin/assets/diskette.png";
+import LogoUser from "../../DashBoardAdmin/assets/profile.png";
 
-export default function EditProfil() {
+export default function EditProfilUser() {
   return (
     <div className="containerEditProfil">
       <div className="containerBreadCrumbs">
@@ -34,11 +34,36 @@ export default function EditProfil() {
               <input id="LastName" type="text" />
             </div>
           </div>
+          <div className="childrenEdit">
+            <div className="containerPassport">
+              <label htmlFor="passport">Passport</label>
+              <input type="text" id="passport" />
+            </div>
+            <div className="containerCIN">
+              <label htmlFor="CIN">CIN</label>
+              <input type="text" id="CIN" />
+            </div>
+          </div>
+
+          <div className="childrenEdit">
+            <div className="containerNationalite">
+              <label htmlFor="nationalite">Nationalité</label>
+              <input type="text" id="nationalite" />
+            </div>
+            <div className="containerTelephone">
+              <label htmlFor="Telephone">Telephone</label>
+              <input type="text" id="Telephone" />
+            </div>
+          </div>
 
           <div className="childrenEdit">
             <div className="containerEmail">
               <label htmlFor="email">Email</label>
               <input type="email" id="email" />
+            </div>
+            <div className="containerDateNaissance">
+              <label htmlFor="DateNaissance">Date-Naissance</label>
+              <input type="date" id="DateNaissance" />
             </div>
           </div>
 

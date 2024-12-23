@@ -1,20 +1,22 @@
 import { useEffect, useState } from "react";
 import Card from "./card";
 import "../style/Cards.css";
-import axios from "axios";
 
-let counter = 0;
-
-export default function Cards() {
+export default function Cards({ ListSearchBar, executeSearch }) {
   const [ListCard, setListCard] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8090/api/vols/get-vols")
-      .then((response) => response.json())
-      .then((result) => setListCard(result));
-  }, []);
 
-  console.log(ListCard[0]);
+
+    if (executeSearch) {
+      setListCard(ListSearchBar);
+    } else {
+      fetch("http://localhost:8080/api/vols/get-vols")
+        .then((response) => response.json())
+        .then((result) => console.log(setListCard(result)));
+    }
+  }, [executeSearch, ListSearchBar]);
+
 
   function displayButton(element) {
     const button_display = document.getElementsByClassName("buttonLoadMore")[0];
@@ -27,6 +29,8 @@ export default function Cards() {
 
   const [numberVol, setNumberVol] = useState(8);
 
+  console.log("ListCard:", ListCard);
+
   const ListCardElement = ListCard.map((element) => {
     let date_depart = new Date(element.date_vol_depart).toLocaleDateString(
       "en-GB"
@@ -34,6 +38,7 @@ export default function Cards() {
     let date_arrivee = new Date(element.date_vol_arrive).toLocaleDateString(
       "en-GB"
     );
+
     return (
       <Card
         depart={element.aeroport_depart}
@@ -43,6 +48,7 @@ export default function Cards() {
         dateArrivee={date_arrivee}
         lien={element.lien}
         id={element.id}
+
         key={element.id}
       />
     );

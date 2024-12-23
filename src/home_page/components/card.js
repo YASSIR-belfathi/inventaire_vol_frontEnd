@@ -12,19 +12,18 @@ export default function Card({
   lien,
  }) {
 
+
   const navigate = useNavigate();
 
   const handleReservation = () => {
     const flightData = {
-      destinationDepart: depart,
-      destinationArrivee: destination,
-      dateDepart: dateDepart,
-      dateArrivee: dateArrivee,
-      price: prix,
-      id: id, // Utilisation de id au lieu de key
-    };
 
-    // Navigate to ReservationForm with state
+      departureCity: depart,
+      arrivalCity: destination,
+      departureDate: dateDepart,
+      returnDate: dateArrivee,
+      price: prix,
+    };
     navigate("/reservation", { state: flightData });
   };
 
@@ -48,7 +47,13 @@ export default function Card({
         </p>
       </div>
       <div className="ReservationButton">
-        <a href={lien} onClick={handleReservation}>Réservez</a>
+
+        <button
+          onClick={handleReservation}
+          className="mt-4 bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600"
+        >
+          Réservez
+        </button>
       </div>
     </div>
   );

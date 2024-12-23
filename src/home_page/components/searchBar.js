@@ -3,6 +3,7 @@ import AtterissageVol from "../assets/assetsMain/atterrissage-davion.png";
 import DecollageVol from "../assets/assetsMain/decoller-de-lavion.png";
 import DateStartIcon from "../assets/assetsMain/calendar.png";
 import IconPassager from "../assets/assetsMain/user.png";
+import { useNavigate } from "react-router";
 // import { ListCard } from "./Cards";
 
 export default function SearchBar() {
@@ -11,27 +12,56 @@ export default function SearchBar() {
   const [Decollage, setDecollage] = useState("");
   const [dateStart, setDateStart] = useState("jj-mm-aaaa");
   const [dateArrive, setDateArrive] = useState("jj-m-aaaa");
+  const navigate = useNavigate();
+  let executeSearch = false;
 
-  // let ListCardChoice = ListCard.map((element) => {
-  //   if (
-  //     element.disponible_place >= addPassager &&
-  //     Decollage === element.depart &&
-  //     atterrissage === element.arrivee &&
-  //     dateArrive === element.dateArrivee &&
-  //     dateStart === element.dateDepart
-  //   ) {
-  //     return element;
-  //   } else if (
-  //     element.disponible_place >= addPassager &&
-  //     Decollage === element.depart &&
-  //     atterrissage === element.arrivee &&
-  //     dateArrive === element.dateArrivee
-  //   ) {
-  //     return element;
-  //   }
-  // });
+  function searchVol() {
+    if (atterrissage !== Decollage) {
+      executeSearch = true;
+      fetch("http://localhost:8080/api/vols/get-vols")
+        .then((response) => response.json())
+        .then((json) => {
+          console.log(json);
+          const result = json.filter((vol) => {
+            let resultFilter =
+              vol &&
+              vol.aeroport_depart.includes(Decollage) &&
+              vol.aeroport_arrive.includes(atterrissage) &&
+              vol.date_vol_depart.includes(dateStart) &&
+              vol.date_vol_arrive.includes(dateArrive) &&
+              vol.capacite >= addPassager;
+            return resultFilter;
+          });
+          navigate("/", { state: { result, executeSearch, update: true } });
+        });
+    } else {
+      alert(
+        "le nom de la ville de destination doît être différent de celui de la ville de départ"
+      );
+    }
+  }
 
-  function searchVol() {}
+  function annulerSearch() {
+    executeSearch = false;
+    navigate("/", { state: { result: [], executeSearch } });
+  }
+
+  let ListVille = ["Casablanca", "Paris", "Roma", "Tanger", "Beni-Mellal"];
+
+  ListVille = ListVille.map((element) => {
+    return element.toUpperCase();
+  });
+
+  let i = 0;
+
+  let ListOptionVille = ListVille.map((element) => {
+    i++;
+    return (
+      <option value={element} key={i}>
+        {element}
+      </option>
+    );
+  });
 
   return (
     <div className="searchBar">
@@ -47,10 +77,10 @@ export default function SearchBar() {
               setAtterissage(event.target.value);
             }}
           >
-            <option value="test">test</option>
-            <option value="test">test</option>
-            <option value="test">test</option>
-            <option value="test">test</option>
+            <option value="" selected disabled>
+              Destination...
+            </option>
+            {ListOptionVille}
           </select>
         </div>
         <div className="endPoint vol">
@@ -61,10 +91,10 @@ export default function SearchBar() {
               setDecollage(event.target.value);
             }}
           >
-            <option value="test">test</option>
-            <option value="test">test</option>
-            <option value="test">test</option>
-            <option value="test">test</option>
+            <option value="" selected disabled>
+              Depart...
+            </option>
+            {ListOptionVille}
           </select>
         </div>
       </div>
@@ -118,6 +148,7 @@ export default function SearchBar() {
         <button type="submit" onClick={searchVol}>
           Chercher
         </button>
+        <button onClick={annulerSearch}>Annuler</button>
       </div>
     </div>
   );

@@ -15,7 +15,7 @@
 .containerEditProfil .containerContent {
   width: 100%;
   height: max-content;
-  padding: 10px 15px;
+  padding: 10px 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -64,7 +64,7 @@
   margin-bottom: 10px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 .containerEditProfil .editInfo .childrenEdit > div {
@@ -73,10 +73,6 @@
   height: max-content;
   width: 45%;
   font-size: 1.2em;
-}
-
-.containerEditProfil .editInfo .childrenEdit .containerEmail {
-  width: 100%;
 }
 
 .containerEditProfil .editInfo .childrenEdit > div > input {
