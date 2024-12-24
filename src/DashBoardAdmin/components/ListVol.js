@@ -2,20 +2,35 @@ import BreadCrumbs from "./BreadCrumbs";
 import "../style/ListVol.css";
 import VolLogo from "../assets/Airplane_Right_Red_26360 (2).png";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function ListVol() {
   const [ListVol, setListVol] = useState([]);
+  const [executeDelete, setExecuteDelete] = useState(false);
+  // const [elementVol, setElemetVol] = useState();
 
   useEffect(() => {
-    fetch("http://localhost:8090/api/vols/get-vols")
+    fetch("http://localhost:8080/api/vols/get-vols")
       .then((response) => response.json())
       .then((data) => {
         setListVol(data);
       });
   }, []);
 
-  function handleDelete(element) {}
-  function handleModification(element) {}
+  function handleDelete(elementVol) {
+    if (executeDelete && elementVol !== null) {
+      axios
+        .delete(
+          "http://localhost:8080/api/vols/delete-vol/".concat(
+            `${elementVol.id}`
+          )
+        )
+        .then((result) => console.log(result))
+        .catch((error) => console.log(error));
+    }
+  }
+
+  // function handleModification(element) {}
 
   let ListVolElement = ListVol.map((element) => {
     let date_depart = new Date(element.date_vol_depart).toLocaleDateString(
@@ -48,13 +63,14 @@ export default function ListVol() {
           <button
             className="buttonModify"
             onClick={() => {
-              handleModification(element);
+              // handleModification(element);
             }}
           >
             Modify
           </button>
           <button
             onClick={() => {
+              setExecuteDelete(true);
               handleDelete(element);
             }}
           >

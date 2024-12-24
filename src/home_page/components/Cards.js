@@ -6,19 +6,15 @@ export default function Cards({ ListSearchBar, executeSearch }) {
   const [ListCard, setListCard] = useState([]);
 
   useEffect(() => {
-
-
     if (executeSearch) {
       setListCard(ListSearchBar);
     } else {
-      
-      fetch("http://localhost:8090/api/vols/get-vols")
+      fetch("http://localhost:8080/api/vols/get-vols")
         .then((response) => response.json())
         .then((result) => console.log(setListCard(result)))
         .catch((error) => console.log(error));
     }
   }, [executeSearch, ListSearchBar]);
-
 
   function displayButton(element) {
     const button_display = document.getElementsByClassName("buttonLoadMore")[0];
@@ -50,7 +46,6 @@ export default function Cards({ ListSearchBar, executeSearch }) {
         dateArrivee={date_arrivee}
         lien={element.lien}
         id={element.id}
-
         key={element.id}
       />
     );

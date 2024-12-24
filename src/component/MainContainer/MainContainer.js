@@ -7,23 +7,23 @@ import airportimage from "./assets/airport1.jpg";
 const MainContainer = () => {
   const location = useLocation();
   const flightData = location.state || {};
-  
-  console.log("les infos du vol :",flightData)
-  
-  console.log("le prix :",flightData.price)
+
+  console.log("les infos du vol :", flightData);
+
+  console.log("le prix :", flightData.price);
   // Fonction pour gérer les données des passagers
-   const handlePassengerConfirmation = (passengerData) => {
+  const handlePassengerConfirmation = (passengerData) => {
     // Fusionner les détails du vol et les informations des passagers
     const reservationData = {
       flightDetails: flightData,
       passengers: passengerData,
-      VolId : flightData.id,
+      VolId: flightData.id,
     };
-    
+
     console.log("Données à envoyer :", reservationData);
 
     // Envoyer au backend via fetch
-    fetch("http://localhost:8090/api/reservations/create", {
+    fetch("http://localhost:8080/api/reservations/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -46,8 +46,6 @@ const MainContainer = () => {
       <Header />
 
       <div className="max-w-screen-lg mx-auto bg-white shadow-md overflow-hidden">
-
-
         {/* Image en haut */}
         <div className="relative">
           <img
@@ -94,21 +92,18 @@ const MainContainer = () => {
               </label>
               <input
                 type="text"
-
                 value={flightData.departureDate || ""}
-
-
                 readOnly
                 className="border border-gray-300 rounded-lg p-2"
               />
             </div>
             <div className="flex flex-col">
-
-              <label className="font-semibold text-gray-700">Date d' arrivee :</label>
+              <label className="font-semibold text-gray-700">
+                Date d' arrivee :
+              </label>
               <input
                 type="text"
                 value={flightData.returnDate || ""}
-
                 readOnly
                 className="border border-gray-300 rounded-lg p-2"
               />
@@ -127,7 +122,10 @@ const MainContainer = () => {
 
         {/* Informations des passagers */}
         <div className="p-6 bg-white shadow-lg rounded-lg mt-6">
-          <PassengerInfo flightData={flightData} onConfirm={handlePassengerConfirmation} />
+          <PassengerInfo
+            flightData={flightData}
+            onConfirm={handlePassengerConfirmation}
+          />
         </div>
       </div>
     </>

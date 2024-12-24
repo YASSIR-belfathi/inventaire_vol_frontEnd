@@ -100,7 +100,7 @@ export default function SearchBar() {
       </div>
       <div className="containerDate">
         <div className="containerDateDépart Date">
-          <img alt="en-cours" src={DateStartIcon} />
+          {/* <img alt="en-cours" src={DateStartIcon} /> */}
           <input
             type="date"
             value={dateStart}
@@ -110,7 +110,7 @@ export default function SearchBar() {
           />
         </div>
         <div className="containerDateArrivee Date">
-          <img alt="en-cours" src={DateStartIcon} />
+          {/* <img alt="en-cours" src={DateStartIcon} /> */}
           <input
             type="date"
             value={dateArrive}

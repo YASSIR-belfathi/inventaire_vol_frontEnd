@@ -59,7 +59,7 @@ export default function Form() {
     if (execute) {
       console.log(execute);
       axios
-        .post("http://localhost:8090/api/auth/signup", passager)
+        .post("http://localhost:8080/api/auth/signup", passager)
         .then((response) => {
           console.log(response);
           navigate("/login");

@@ -5,7 +5,7 @@ import volImg from "../assets/vol (1).png";
 import user from "../assets/user.png";
 import airport from "../assets/airport (1).png";
 import listVol from "../assets/list.png";
-import listAirport from "../assets/clipboard.png";
+// import listAirport from "../assets/clipboard.png";
 import logout from "../assets/exit.png";
 import { Link } from "react-router";
 
@@ -40,12 +40,6 @@ export default function HeaderAdmin() {
           <div className="Option4">
             <img src={listVol} alt="en-cours" />
             <p>List Vol</p>
-          </div>
-        </Link>
-        <Link to="#">
-          <div className="Option5">
-            <img src={listAirport} alt="en-cours" />
-            <p>List Aeroport</p>
           </div>
         </Link>
       </div>

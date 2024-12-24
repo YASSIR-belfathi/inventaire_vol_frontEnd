@@ -55,6 +55,7 @@
   padding: 10px 70px;
   background-color: rgb(222, 222, 222);
   border-radius: 7px;
+  /* box-shadow: 0px 10px 15px rgba(1 1 1 0.4); */
 }
 .editCreationInfo > div {
   width: 100%;
