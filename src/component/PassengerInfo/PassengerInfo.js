@@ -69,7 +69,7 @@ const PassengerInfo = ({ onConfirm, flightData = {} }) => {
     }
 
     const reservationData = {
-      volId: flightData.id || "23",
+      volId: flightData.id || 36,
       passagerId: mainPassengerId,
       prixTotal: parseFloat(flightData.price) * passengers.length,
       additionalPassengers: passengers.map((p) => ({
