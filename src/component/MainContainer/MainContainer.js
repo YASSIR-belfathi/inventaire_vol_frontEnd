@@ -7,6 +7,7 @@ import airportimage from "./assets/airport1.jpg";
 const MainContainer = () => {
   const location = useLocation();
   const flightData = location.state || {};
+  
   console.log("les infos du vol :",flightData)
   
   console.log("le prix :",flightData.price)
